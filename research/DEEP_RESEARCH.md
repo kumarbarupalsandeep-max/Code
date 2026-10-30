@@ -4,6 +4,34 @@
 **Copyright:** © 2026 Sandeep Barupal. All rights reserved, except as stated below.  
 **Research status:** Detailed research draft — pehle decide karein ki product browser editor hoga ya full cloud coding workspace.
 
+## Research Overview
+
+| Item | Details |
+|---|---|
+| Product | Code |
+| Main focus | Browser-based coding workspace |
+| Language | Aasaan Hindi + simple English |
+| Owner / Content Creator | Sandeep Barupal |
+| Copyright | © 2026 Sandeep Barupal |
+
+## Table of Contents
+
+- [1. Code kya hai?](#1-code-kya-hai)
+- [2. Kiske kaam aayega?](#2-kiske-kaam-aayega)
+- [3. Similar tools se kya seekhein?](#3-similar-tools-se-kya-seekhein)
+- [4. Main features](#4-main-features)
+- [5. Pages / screens](#5-pages-screens)
+- [6. Main workflow](#6-main-workflow)
+- [7. Technical planning](#7-technical-planning)
+- [8. Security](#8-security)
+- [9. Development phases](#9-development-phases)
+- [10. Success metrics](#10-success-metrics)
+- [11. Risks](#11-risks)
+- [12. Original product idea](#12-original-product-idea)
+- [13. Sources](#13-sources)
+
+---
+
 ## 1. Code kya hai?
 Code ek web-based coding workspace ho sakta hai jahan user browser mein files dekh sake, code likh sake, project search kar sake aur supported environment mein preview/build chala sake.
 
@@ -62,3 +90,4 @@ Full IDE banana bahut bada kaam hai. Shuru mein supported languages aur features
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
 **Note:** VS Code ki branding ya design ko copy na karein; apna interface aur product identity banayein.
+
