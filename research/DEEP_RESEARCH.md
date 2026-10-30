@@ -1,85 +1,64 @@
-# Code — Deep Product & Market Research
+# Code — Aasaan Bhasha Mein Deep Research
 
 **Owner / Content Creator:** Sandeep Barupal  
-**Copyright:** © 2026 Sandeep Barupal. All rights reserved, except third-party resources under their own terms.  
-**Research status:** Deep-research baseline v1.0 — desk research; editor scope must be validated with developers.
+**Copyright:** © 2026 Sandeep Barupal. All rights reserved, except as stated below.  
+**Research status:** Detailed research draft — pehle decide karein ki product browser editor hoga ya full cloud coding workspace.
 
-## 1. Product thesis
-Code is envisioned as a web-based development workspace/editor. Its central product decision is whether to be a browser code editor, a cloud development environment, or a full IDE. Editing text is only one part of an IDE: users also expect project navigation, language intelligence, terminal/build tasks, debugging, source control, extensions and secure workspace management.
+## 1. Code kya hai?
+Code ek web-based coding workspace ho sakta hai jahan user browser mein files dekh sake, code likh sake, project search kar sake aur supported environment mein preview/build chala sake.
 
-## 2. Competitor landscape
-VS Code provides an extensible editor ecosystem; Monaco is the browser-based editor component derived from VS Code; GitHub Codespaces supplies cloud-hosted compute and project environments usable through browser or VS Code. These are different layers, not direct substitutes. Sources: [VS Code docs](https://code.visualstudio.com/docs), [Monaco Editor](https://microsoft.github.io/monaco-editor/), [GitHub Codespaces](https://docs.github.com/en/codespaces).
+## 2. Kiske kaam aayega?
+Developers, students, small teams aur remote project teams.
 
-| Layer | Reference | What to study |
-|---|---|---|
-| Editor UI component | Monaco | Editing, language services, accessibility, browser performance |
-| Desktop editor ecosystem | VS Code | Extensions, settings, debugging, source control, workspace model |
-| Remote development | Codespaces | Environment provisioning, devcontainers, persistence, quotas |
-| Browser sandbox IDEs | Replit and similar | Onboarding, preview, sharing, execution isolation and collaboration |
+## 3. Similar tools se kya seekhein?
+VS Code mein editor, terminal, debugging aur Git features hain. Monaco Editor browser mein code-editing experience dene wala component hai, lekin woh akela complete cloud IDE nahi hai. Isliye product ki limits clear honi chahiye.
 
-## 3. Scope recommendation
-Start with a reliable browser editor and project workspace; defer arbitrary code execution until isolated infrastructure exists. Never run user code inside the web application process or with platform credentials.
+## 4. Main features
+1. Project/file explorer.
+2. Code editor aur syntax highlighting.
+3. Search aur replace.
+4. Autosave aur recovery.
+5. Git status, diff aur commit.
+6. Supported project ka preview/build.
+7. Build logs aur errors.
+8. Project templates.
+9. Keyboard shortcuts aur themes.
+10. Workspace sharing/permissions.
+11. Extensions ya plugins ki controlled list.
+12. Workspace timeout aur resource limits.
 
-## 4. Feature specification
-### P0
-- Workspace/project list, file tree, tabs, editor, search and command palette.
-- Syntax highlighting, configurable theme, keyboard shortcuts, autosave and unsaved-change recovery.
-- Import/export project files; Git repository connection with read-only mode first.
-- Accessible keyboard navigation and responsive layout.
-- Clear runtime support labels: editing-only vs executable workspace.
-### P1
-- Language server integration, diagnostics, formatting, snippets and symbol navigation.
-- Terminal/build/test tasks inside isolated workspaces.
-- Git status, diff and commit workflows with confirmation.
-- Preview server with port proxy and safe URL handling.
-### P2
-- Debugging, collaborative editing, extension marketplace, AI assistance with code provenance and enterprise policies.
+## 5. Pages / screens
+Dashboard, My Projects, New Project, Workspace Editor, File Explorer, Search, Source Control, Terminal/Tasks, Preview, Build Logs, Templates, Team Sharing, Integrations, Settings.
 
-## 5. Page map
-Workspace Home; Project Picker; Editor Workspace; Search; Source Control; Branch/Diff; Terminal; Run/Preview; Debug; Extensions; Settings; Account/Sessions; Usage/Quota; Audit/Admin.
+## 6. Main workflow
+User project banata ya Git repo import karta hai. Files edit karta hai, changes save karta hai aur preview/build chalata hai. Agar Git connected ho to diff dekhta hai aur commit push kar sakta hai.
 
-## 6. Architecture
-Separate browser editor, workspace API, file service, language-service adapters and optional execution plane. For remote execution, create short-lived isolated containers/VMs, enforce CPU/memory/time/disk/network limits, block cloud metadata endpoints, use non-root identities, mount minimal secrets, and destroy workspaces safely. Store project data with versioning and recovery. Use WebSocket reconnect/backpressure controls for terminals and language services.
+## 7. Technical planning
+Editor interface aur code chalane wala environment alag rakhein. Browser mein code edit karna relatively simple hai; user ka code safely run karna difficult hai. Workspace ke liye isolated container/VM aur resource limits ki zaroorat ho sakti hai.
 
-## 7. Security
-Treat code and project files as untrusted. Apply strict CSP, safe file path handling, upload limits, malware scanning where appropriate, secret redaction, tenant isolation and audit logs. Extension installation requires trust boundaries and publisher review. Prevent SSRF through preview proxies and terminal/network controls. Do not claim sandboxing until it has been independently tested.
+## 8. Security
+User code ko trusted server ke access ke saath na chalayein. CPU, memory, time aur network limits rakhein. Git tokens browser JavaScript mein expose na karein. Workspace ko secure tareeke se band aur clean karein.
 
-## 8. UX and performance metrics
-Time to open a project, editor responsiveness on large files, autosave recovery success, language-server latency, workspace start time, preview success, crash-free sessions and keyboard task completion. Support reduced motion, high contrast, screen readers and low-bandwidth recovery.
+## 9. Development phases
+- Phase 1: File explorer, editor, save aur project search.
+- Phase 2: Git integration aur diff.
+- Phase 3: Limited languages ke liye safe preview/build.
+- Phase 4: Team collaboration, debugging aur approved extensions.
 
-## 9. Risks and validation
-Risks: scope explosion, slow editor, browser memory limits, unsafe code execution, extension compromise and cloud compute costs. Test with real project sizes and different network conditions. Interview frontend/backend developers about must-have workflows before building a terminal or debugger.
+## 10. Success metrics
+Project start karne ka time, workspace load time, save reliability, build success aur errors ko solve karne ka time.
 
-## 10. References
-- [Visual Studio Code documentation](https://code.visualstudio.com/docs)
+## 11. Risks
+Full IDE banana bahut bada kaam hai. Shuru mein supported languages aur features ki list clear rakhein. Preview ko har language support karne wala na batayein jab tak test na ho.
+
+## 12. Original product idea
+“Start coding quickly” experience: template choose karein, editor khule, preview chale aur Git workflow simple ho.
+
+## 13. Sources
+- [VS Code getting started](https://code.visualstudio.com/docs/editing/getting-started/overview)
+- [VS Code source control](https://code.visualstudio.com/docs/sourcecontrol/overview)
 - [Monaco Editor](https://microsoft.github.io/monaco-editor/)
-- [GitHub Codespaces](https://docs.github.com/en/codespaces)
+- [Language Server Protocol](https://microsoft.github.io/language-server-protocol/)
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
-## 11. Next work
-Decide the product boundary, compare browser editor vs cloud IDE requirements, prototype the core workspace, and threat-model any code execution before implementation.
-
-## 15. Deep research addendum — evidence and product decisions
-
-### Market evidence
-VS Code documents an extensible editor with integrated terminal, source control, debugging, settings, and extensions. Its source-control guide notes that Git operations such as staging, commits, branches, and merge conflict resolution are available in the editor while using the same underlying repository as command-line Git. Monaco Editor is a separate browser-based editor component and should not be mistaken for a complete IDE/runtime. Sources: [VS Code overview](https://code.visualstudio.com/docs/editing/getting-started/overview), [Source control](https://code.visualstudio.com/docs/sourcecontrol/overview), [Monaco Editor](https://microsoft.github.io/monaco-editor/).
-
-### Competitive implications
-A web-based Code workspace needs to choose its execution model early: local browser editing, remote development container, or managed cloud workspace. Editing text in a browser is far simpler than safely executing arbitrary code. The MVP should clearly state runtime and language limits rather than imply a full desktop IDE.
-
-### Recommended core workflows
-1. Create/import a project from a template or Git repository.
-2. Browse files, edit with syntax highlighting, search, and safe autosave/recovery.
-3. Inspect diffs, stage changes, commit, branch, pull, and push through a documented Git integration.
-4. Run a controlled preview/build in an isolated workspace with logs and resource quotas.
-5. Provide diagnostics and task output; add debugging only for supported runtimes.
-6. Manage extensions/plugins through a curated allowlist and signed/versioned metadata.
-
-### Architecture and security
-Keep the editor UI separate from workspace execution. Run user code in ephemeral isolated containers/VMs with CPU, memory, time, filesystem, and network limits. Use short-lived credentials and never expose repository tokens to browser JavaScript. Add audit logs, workspace expiry, recovery, and explicit permissions for terminal/network access.
-
-### Validation and success measures
-Measure time to first successful preview, workspace startup latency, save/recovery reliability, build success, active project retention, and support incidents. Test with realistic repositories, large files, poor networks, and concurrent sessions.
-
-### Sources and caveats
-VS Code is a reference for editor workflows, not a license to copy its brand, icons, or UI. Monaco is an editor component, not a turnkey cloud IDE. Language support, terminal access, and collaboration require separate architecture and cost analysis.
+**Note:** VS Code ki branding ya design ko copy na karein; apna interface aur product identity banayein.
