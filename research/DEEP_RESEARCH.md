@@ -58,3 +58,28 @@ Risks: scope explosion, slow editor, browser memory limits, unsafe code executio
 
 ## 11. Next work
 Decide the product boundary, compare browser editor vs cloud IDE requirements, prototype the core workspace, and threat-model any code execution before implementation.
+
+## 15. Deep research addendum — evidence and product decisions
+
+### Market evidence
+VS Code documents an extensible editor with integrated terminal, source control, debugging, settings, and extensions. Its source-control guide notes that Git operations such as staging, commits, branches, and merge conflict resolution are available in the editor while using the same underlying repository as command-line Git. Monaco Editor is a separate browser-based editor component and should not be mistaken for a complete IDE/runtime. Sources: [VS Code overview](https://code.visualstudio.com/docs/editing/getting-started/overview), [Source control](https://code.visualstudio.com/docs/sourcecontrol/overview), [Monaco Editor](https://microsoft.github.io/monaco-editor/).
+
+### Competitive implications
+A web-based Code workspace needs to choose its execution model early: local browser editing, remote development container, or managed cloud workspace. Editing text in a browser is far simpler than safely executing arbitrary code. The MVP should clearly state runtime and language limits rather than imply a full desktop IDE.
+
+### Recommended core workflows
+1. Create/import a project from a template or Git repository.
+2. Browse files, edit with syntax highlighting, search, and safe autosave/recovery.
+3. Inspect diffs, stage changes, commit, branch, pull, and push through a documented Git integration.
+4. Run a controlled preview/build in an isolated workspace with logs and resource quotas.
+5. Provide diagnostics and task output; add debugging only for supported runtimes.
+6. Manage extensions/plugins through a curated allowlist and signed/versioned metadata.
+
+### Architecture and security
+Keep the editor UI separate from workspace execution. Run user code in ephemeral isolated containers/VMs with CPU, memory, time, filesystem, and network limits. Use short-lived credentials and never expose repository tokens to browser JavaScript. Add audit logs, workspace expiry, recovery, and explicit permissions for terminal/network access.
+
+### Validation and success measures
+Measure time to first successful preview, workspace startup latency, save/recovery reliability, build success, active project retention, and support incidents. Test with realistic repositories, large files, poor networks, and concurrent sessions.
+
+### Sources and caveats
+VS Code is a reference for editor workflows, not a license to copy its brand, icons, or UI. Monaco is an editor component, not a turnkey cloud IDE. Language support, terminal access, and collaboration require separate architecture and cost analysis.
