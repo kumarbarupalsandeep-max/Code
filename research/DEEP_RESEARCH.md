@@ -91,3 +91,43 @@ Full IDE banana bahut bada kaam hai. Shuru mein supported languages aur features
 
 **Note:** VS Code ki branding ya design ko copy na karein; apna interface aur product identity banayein.
 
+
+
+## 14. Competitor reference research — Visual Studio Code
+
+### Reference URLs
+- Visual Studio Code: https://code.visualstudio.com/
+- VS Code documentation: https://code.visualstudio.com/docs
+- Getting started: https://code.visualstudio.com/docs/getstarted/introvideos
+- Source control: https://code.visualstudio.com/docs/sourcecontrol/overview
+- Extensions: https://code.visualstudio.com/docs/editor/extension-marketplace
+
+### VS Code se kya samajh aata hai?
+VS Code ek extensible code editor hai. Core experience mein editor, file explorer, search, integrated terminal, debugging, source control, settings, themes aur extensions ecosystem shamil hain. Extensions editor ko languages, runtimes aur external tools ke saath connect karte hain.
+
+### Pages / feature map
+1. Welcome / recent projects
+2. Workspace and file explorer
+3. Editor tabs and split editor
+4. Global search and replace
+5. Command palette
+6. Source control / diff
+7. Terminal and tasks
+8. Debug view and breakpoints
+9. Extensions marketplace
+10. Settings, keybindings and themes
+11. Problems / output / logs
+12. Accounts, sync and workspace trust
+
+### Important workflow
+Folder/project open → files explore → code edit → diagnostics inspect → terminal/task run → debugger use → Git diff/stage/commit → extension or setting configure.
+
+### Original Code direction
+VS Code ka familiar developer workflow samjhein, lekin apni product identity aur navigation banayein. Agar Code browser-based workspace hai, to file editing ko execution sandbox se separate rakhein. MVP mein editor + file tree + search + save + Git diff se start karna practical hai.
+
+### Design / implementation cautions
+- Monaco Editor sirf editor component hai; full IDE, terminal, runtime ya debugger automatically provide nahi karta.
+- Extensions ko permissions, publisher trust and sandboxing ke saath handle karein.
+- User code execute karne ke liye isolated environment, CPU/memory/time limits aur network controls chahiye.
+- Git credentials client-side code mein expose na hon.
+
